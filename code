@@ -1,4 +1,4 @@
 T = int(input())
 q = []
 for i in range(T):
-  q.append(input())
+  q.append(int(input()))
