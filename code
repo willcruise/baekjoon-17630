@@ -1,4 +1,4 @@
-T = map(int, input())
+T = int(input())
 q = []
 for i in range(T):
   q.append(input())
