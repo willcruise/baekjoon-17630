@@ -2,36 +2,21 @@ T = int(input())
 q = []
 for i in range(T):
   q.append(int(input()))
-
-def dectobinminone(x):
-  res = []
-  temp = x-1
-  while True:
-    temp , temp2 = divmod(temp , 2)
-    res.append(temp2)
-    if temp == 1 :
-       res.append(temp)
-       break
-  return res
   
 for i in range(T):
   claim = q[i]
-  steps = len(bin(claim))-1
-  operations = [[1,1]]
-
-  binlist = dectobinminone(claim)
-  cnt = 2
-  for i in reversed(range(len(binlist)-1)):
-    if binlist[i] == 1: operations.append([1,cnt])
-    else: operations.append([2,cnt])
-    cnt += 1  
-  
-  operations.append([1,steps])
-
+  binary = bin(claim-1)
+  steps = len(binary)-1
   print(steps)
-  for i in operations:
-    a, b = i
-    print(a, b)
+  print(1, 1)
 
+  binlist = list(binary)
+  binlist.pop(0)
+  binlist.pop(0)
 
+  for p in range(1, steps -1):
+    if binlist[p] == '1': print(1,p+1)
+    else: print(2,p+1)
+  
+  print(1,steps)
 
