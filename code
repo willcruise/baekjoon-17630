@@ -3,25 +3,30 @@ q = []
 for i in range(T):
   q.append(int(input()))
 
-def boundadd(line, bound):
-  res = 0
-  if bound[0] == bound[1]:
-    res = line[bound[0]-1]
-  else:
-    for i in range(bound[0]-1, bound[1]):
-      res += line[i]
+def dectobinminone(x):
+  res = []
+  temp = x-1
+  while True:
+    temp , temp2 = divmod(temp , 2)
+    res.append(temp2)
+    if temp == 1 :
+       res.append(temp)
+       break
   return res
-
+  
 for i in range(T):
   claim = q[i]
   steps = len(bin(claim))-1
-  operations = []
-  line = [1]
+  operations = [[1,1]]
 
-  for i in range(steps):
-    operations.append([1, i+1])
+  binlist = dectobinminone(claim)
+  cnt = 2
+  for i in reversed(range(len(binlist)-1)):
+    if binlist[i] == 1: operations.append([1,cnt])
+    else: operations.append([2,cnt])
+    cnt += 1  
   
-
+  operations.append([1,steps])
 
   print(steps)
   for i in operations:
